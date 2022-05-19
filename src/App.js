@@ -1,23 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
 
+// import firebase sdk
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+// import firebase hooks
+import { useAuthState } from 'react-firebase-hooks';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+// 作成したfirebaseのアプリのコンフィグを入れる
+firebase.initializeApp({
+  apiKey: "AIzaSyA6xkRYS5rXsIr91SBSCslU53yqY5OWbmw",
+  authDomain: "firect-chat.firebaseapp.com",
+  projectId: "firect-chat",
+  storageBucket: "firect-chat.appspot.com",
+  messagingSenderId: "947863578423",
+  appId: "1:947863578423:web:8a97bac80ef2d557ad1cb2",
+  measurementId: "G-9D2J78MDM1"
+})
+
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+
 function App() {
+  const [user] = useAuthState(auth);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+
       </header>
+
+      <section>
+        {user ? <ChatRoom /> : <SignIn /> }
+      </section>
     </div>
   );
 }
