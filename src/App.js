@@ -1,16 +1,15 @@
-import logo from './logo.svg';
+import React, { useRef, useState } from 'react';
 import './App.css';
 
 // import firebase sdk
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import 'firebase/analytics';  
+//import 'firebase/analytics';  
 
 // import firebase hooks
 import { useAuthState } from 'react-firebase-hooks';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { signOut } from 'firebase/auth';
 
 // 作成したfirebaseのアプリのコンフィグを入れる
 firebase.initializeApp({
@@ -25,27 +24,31 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+//const analytics = firebase.analytics();
 
 
 function App() {
+
   const [user] = useAuthState(auth);
 
   return (
     <div className="App">
       <header>
-
+        <h1>⚛️🔥💬</h1>
+        <SignOut />
       </header>
 
       <section>
-        {user ? <ChatRoom /> : <SignIn /> }
+        {user ? <ChatRoom /> : <SignIn />}
       </section>
+
     </div>
   );
 }
 
 
 // google認証を使ったサインイン機能
-function Signin() {
+function SignIn() {
   const singInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
@@ -57,7 +60,7 @@ function Signin() {
 }
 
 // サインアウト機能
-function signOut() {
+function SignOut() {
   return auth.currentUser && (
 
     <button onClick={() => auth.signOut()}>Sign Out</button>
@@ -111,13 +114,12 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
+  const { text, uid, } = props.message;
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
       <p>{text}</p>
     </div>
   </>)
