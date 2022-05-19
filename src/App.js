@@ -24,6 +24,7 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
+
 function App() {
   const [user] = useAuthState(auth);
 
@@ -39,5 +40,19 @@ function App() {
     </div>
   );
 }
+
+
+// google認証を使ったサインイン機能
+function Signin() {
+  const singInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+
+  return (
+    <button onClick={singInWithGoogle}>Google認証</button>
+  )
+}
+
 
 export default App;
