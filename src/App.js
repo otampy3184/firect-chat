@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
 
-// import firebase sdk
-import firebase from 'firebase/app';
+// import firebase sdk  
+import { firebase } from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 //import 'firebase/analytics';  
 
 // import firebase hooks
-import { useAuthState } from 'react-firebase-hooks';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 // 作成したfirebaseのアプリのコンフィグを入れる
