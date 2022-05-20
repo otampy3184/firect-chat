@@ -2,6 +2,11 @@ import React, { useRef, useState } from 'react';
 import './App.css';
 
 // import firebase sdk  
+/**
+ * 
+ * なんでmodule not foundなん
+ * 
+ */
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
