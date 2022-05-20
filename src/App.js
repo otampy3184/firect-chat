@@ -2,17 +2,20 @@ import React, { useRef, useState } from 'react';
 import './App.css';
 
 // import firebase sdk  
-import { firebase } from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 //import 'firebase/analytics';  
+
+const firestore = getFirestore()
+const auth = getAuth()
 
 // import firebase hooks
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 // 作成したfirebaseのアプリのコンフィグを入れる
-firebase.initializeApp({
+initializeApp({
   apiKey: "AIzaSyA6xkRYS5rXsIr91SBSCslU53yqY5OWbmw",
   authDomain: "firect-chat.firebaseapp.com",
   projectId: "firect-chat",
@@ -22,8 +25,8 @@ firebase.initializeApp({
   measurementId: "G-9D2J78MDM1"
 })
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
+// const auth = firebase.auth();
+// const firestore = firebase.firestore();
 //const analytics = firebase.analytics();
 
 
