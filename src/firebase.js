@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 
+ // firebaseで設定したconfig情報を追加し、Firebaseのインスタンスを作成
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyC_730ZmO8rOnJv02KEBnaydc5d9KlnwLA",
     authDomain: "firechat-eb0f5.firebaseapp.com",
@@ -10,8 +11,10 @@ const firebaseApp = firebase.initializeApp({
     measurementId: "G-GEJDXM80CV"
 })
 
+// firebaseのDB操作用の機能
 const db = firebaseApp.firestore()
 
+// firebaseのAuhenticate用の機能
 const auth = firebase.auth()
 
 export { db, auth }

@@ -8,7 +8,10 @@ import SignOut from './SignOut'
 // chat機能切り出し
 function Chat() {
     const scroll = useRef()
+    // Hookをつかったmessageの変数とSetMessageの関数を作成する
     const [messages, setMessages] = useState([])
+
+    // 副作用を使用してDB内のメッセージを古い順に取得していく
     useEffect(() => {
         db.collection('messages').orderBy('createdAt').limit(50).onSnapshot(snapshot => {
             setMessages(snapshot.docs.map(doc => doc.data()))

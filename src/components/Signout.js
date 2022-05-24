@@ -2,7 +2,9 @@ import React from 'react'
 import { auth } from '../firebase.js'
 import { Button } from '@material-ui/core'
 
+// Firebaseを使ったサインアウト用の機能
 function SignOut() {
+    // FirebaseのAuthのサインアウトを呼び出す
     return (
         <div style={{
             display: 'flex', justifyContent: 'center', position: 'fixed', width: '100%', backgroundColor: '#FAFAFA', top: 0, borderBottom: 'solid 1px lightgray', zIndex: '10'
